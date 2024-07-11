@@ -1,0 +1,198 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:LoudnessMetter.ViewModels"
+			 xmlns:controls="clr-namespace:LoudnessMetter.Style"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="800"
+             x:Class="LoudnessMetter.Views.MainView"
+             x:DataType="vm:MainViewModel">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+	<UserControl.Styles>
+		<Style Selector="Label" >
+			<Setter Property="FontFamily" Value="Outfit" ></Setter>
+		</Style>
+		<!-- button styles  -->
+		<Style Selector="Button.small" >
+			<Setter Property="Width" Value="40" ></Setter> <Setter Property="Height" Value="40" ></Setter>
+			<Setter Property="Background" Value="Transparent" ></Setter>
+		</Style>
+		<Style Selector="Button.small:pointerover /template/ ContentPresenter" >
+			<Setter Property="Background" Value="Transparent" ></Setter>
+			<Setter Property="RenderTransform" Value="scale(1.1)" ></Setter> <Setter Property="Opacity" Value="0.5" ></Setter>
+		</Style>
+
+		<Style Selector="Button.circle" >
+			<Setter Property="Margin" Value="0,0,3,0" ></Setter>
+			<Setter Property="Background" Value="{DynamicResource midblue}" ></Setter>
+			<Setter Property="CornerRadius" Value="100" ></Setter>
+			<Setter Property="HorizontalContentAlignment" Value="Center" ></Setter>
+			<Setter Property="VerticalContentAlignment" Value="Center" ></Setter>
+		</Style>
+		<Style Selector="Button.circle:pointerover /template/ ContentPresenter" >
+			<Setter Property="Background" Value="{DynamicResource lightblue}" ></Setter>
+		</Style>
+		
+		<Style Selector="Button.mainpanel">
+			<Setter Property="Background" Value="{DynamicResource midblue}"></Setter>
+			<Setter Property="Height" Value="20"></Setter>
+			<Setter Property="Padding" Value="5,2"></Setter>
+			<Setter Property="Foreground" Value="Black"></Setter>
+			<Setter Property="CornerRadius" Value="10"></Setter>
+			<Setter Property="HorizontalContentAlignment" Value="Center" ></Setter>
+			<Setter Property="VerticalContentAlignment" Value="Center" ></Setter>
+			<Setter Property="FontFamily" Value="Outfit"></Setter>
+			<Setter Property="FontSize" Value="10"></Setter>
+			<Setter Property="FontWeight" Value="Bold"></Setter>
+			<Setter Property="Margin" Value="0,0,5,0"></Setter>
+		</Style>
+		<Style Selector="Button.mainpanel:pointerover /template/ ContentPresenter">
+			<Setter Property="Background" Value="#afceff"></Setter>
+		</Style>
+	</UserControl.Styles>
+
+	<Grid RowDefinitions="Auto,Auto,*,Auto,Auto" >
+		<!-- menu -->
+		<StackPanel Grid.Row="0" Orientation="Horizontal" >
+			<Menu>File</Menu> <Menu>Help</Menu>
+		</StackPanel>
+		<!-- top bar -->
+		<Grid Grid.Row="1" Height="50" Background="{DynamicResource whitegrey}" >
+			<Grid ColumnDefinitions="Auto,Auto,Auto,*,Auto,Auto" >
+				<Button Grid.Column="0" Classes="small" >
+					<Image Source="{SvgImage /Assets/desktop.svg}" ></Image>
+				</Button>
+				<Button Grid.Column="1" Classes="small" >
+					<Image Source="{SvgImage /Assets/lock.svg}" ></Image>
+				</Button>
+				<Button Grid.Column="2" Classes="small" Width="70" FontFamily="Outfit" FontWeight="Bold" FontSize="12"
+					HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#98d794" Height="25" Padding="0" >
+					<Button.Styles>
+						<Style Selector="Button:pointerover /template/ ContentPresenter" >
+							<Setter Property="Background" Value="#b4ffaf" ></Setter> <Setter Property="Opacity" Value="0.9" ></Setter>
+							<Setter Property="RenderTransform" Value="scale(1.05)" ></Setter>
+						</Style>
+					</Button.Styles>
+					<Label Content="Buy Pro" ></Label>
+				</Button>
+				<Button Grid.Column="4" Classes="small" >
+					<Image Source="{SvgImage /Assets/open-window.svg}" ></Image>
+				</Button>
+				<Button Grid.Column="5" Classes="small" >
+					<Image Source="{SvgImage /Assets/settings.svg}" ></Image>
+				</Button>
+				<StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
+					<Label Content="YOULEAN" FontSize="25" FontWeight="Bold" ></Label>
+					<Label Content="LOUDNESS METTER 2" FontSize="25" ></Label>
+				</StackPanel>
+			</Grid>
+		</Grid>
+		<!-- main panel -->
+		<Grid Grid.Row="2" ColumnDefinitions="Auto,Auto,Auto,*" Background="{DynamicResource dark}" >
+			<!-- left  -->
+			<Grid.Styles>
+				<Style Selector="Label" >
+					<Setter Property="Foreground" Value="White" ></Setter>
+					<Setter Property="Padding" Value="0"></Setter>
+					<Setter Property="Margin" Value="0,0,0,0"></Setter>
+				</Style>
+			</Grid.Styles>
+			<Grid Grid.Column="0"  RowDefinitions="*,Auto" Width="120" >
+				<Grid.Styles>
+					<Style Selector="Label">
+						<Setter Property="Padding" Value="0"></Setter>
+					</Style>
+				</Grid.Styles>
+				<Grid Grid.Row="0" ColumnDefinitions="Auto,Auto,*,Auto,Auto" Margin="20,15,0,0">
+					<Grid Grid.Column="0" RowDefinitions="*,*,*,3*,2*,2*,3*,3*,3*,3*" HorizontalAlignment="Right">
+						<Label Grid.Row="0" Content="0 —" ></Label>
+						<Label Grid.Row="1" Content="0 —" ></Label>
+						<Label Grid.Row="2" Content="0 —" ></Label>
+						<Label Grid.Row="3" Content="0 —" ></Label>
+						<Label Grid.Row="4" Content="0 —" ></Label>
+						<Label Grid.Row="5" Content="0 —" ></Label>
+						<Label Grid.Row="6" Content="0 —" ></Label>
+						<Label Grid.Row="7" Content="0 —" ></Label>
+						<Label Grid.Row="8" Content="0 —" ></Label>
+						<Label Grid.Row="9" Content="0 —" ></Label>
+					</Grid>
+					<Grid Grid.Column="2" RowDefinitions="*,*" Margin="0,0,0,20" >
+						<Rectangle Grid.Row="0" Width="30" Fill="Orange"></Rectangle>
+						<Rectangle Grid.Row="1" Width="30" Fill="White"></Rectangle>
+					</Grid>
+					<Grid Grid.Column="3" RowDefinitions="*,*,*,3*,2*,2*,3*,3*,3*,3*">
+						<Label Grid.Row="0" Content="—" ></Label>
+						<Label Grid.Row="1" Content="—" ></Label>
+						<Label Grid.Row="2" Content="—" ></Label>
+						<Label Grid.Row="3" Content="—" ></Label>
+						<Label Grid.Row="4" Content="—" ></Label>
+						<Label Grid.Row="5" Content="—" ></Label>
+						<Label Grid.Row="6" Content="—" ></Label>
+						<Label Grid.Row="7" Content="—" ></Label>
+						<Label Grid.Row="8" Content="—" ></Label>
+						<Label Grid.Row="9" Content="—" ></Label>
+					</Grid>
+						<Canvas Grid.Column="4" Width="30" Height="30" Margin="2,0,0,0">
+							<Rectangle Fill="Red" Width="30" Height="30"></Rectangle>
+						</Canvas>
+				
+				</Grid>
+				<Grid Grid.Row="1" RowDefinitions="Auto,Auto">
+					<Label Grid.Row="0" Content="LUFS" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Outfit" FontSize="21" FontWeight="Bold"></Label>
+					<StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center"
+						Margin="0,5,0,20">
+						<Button Classes="mainpanel" >
+							<Image Source="{SvgImage /Assets/forward.svg}"></Image>
+						</Button>
+						<Button Classes="mainpanel" Content="INT-LRA" ></Button>
+					</StackPanel>
+				</Grid>
+			</Grid>
+			<StackPanel Grid.Column="1" Width="140" VerticalAlignment="Top" Margin="5,5,0,15">
+				<controls:MainPanelLabel LargeText="-46.0 LUFS" SmallText="SHORT TERM"></controls:MainPanelLabel>
+				<controls:MainPanelLabel LargeText="-37.0 LUFS" SmallText="INTEGRATED" Background="{DynamicResource ligtblue-panel}"></controls:MainPanelLabel>
+				<controls:MainPanelLabel LargeText="10.6 LU" SmallText="LOUDNESS RANGE" ></controls:MainPanelLabel>
+				<controls:MainPanelLabel LargeText="13.5 LU" SmallText="REALTIME DYNAMICS" ></controls:MainPanelLabel>
+				<controls:MainPanelLabel LargeText="39.5 LU" SmallText="AVG.DYNAMICS(PLR)" Margin="0,0,0,15"></controls:MainPanelLabel>
+				<controls:MainPanelLabel Classes="button" LargeText="-6.4 LUFS" SmallText="MOMENTARY MAX"></controls:MainPanelLabel>
+				<controls:MainPanelLabel Classes="button" LargeText="-12.2 LUFS" SmallText="SHORT TERM MAX"></controls:MainPanelLabel>
+				<controls:MainPanelLabel Classes="button" LargeText="2.8 dB" SmallText="TRUE PEAK MAX(L R)"></controls:MainPanelLabel>
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15,0,0">
+					<Button Classes="mainpanel" Content="AUTO" Margin="0,0,10,0"></Button>
+					<Button Classes="mainpanel" Padding="0" Width="30" Height="30" CornerRadius="100" >
+						<Image Source="{SvgImage /Assets/close-circle.svg}"></Image>
+					</Button>
+				</StackPanel>
+			</StackPanel>
+		</Grid>
+
+		<!-- bottom bar -->
+		<Grid Grid.Row="3" Height="50" Background="{DynamicResource whitegrey}"
+			ColumnDefinitions="Auto,*,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" >
+			<Grid.Styles>
+				<Style Selector="Button" >
+					<Setter Property="FontWeight" Value="Bold" ></Setter> 
+					<Setter Property="FontFamily" Value="Outfit" ></Setter>
+					<Setter Property="Margin" Value="0,0,20,0" ></Setter> 
+					<Setter Property="CornerRadius" Value="15" ></Setter>
+				</Style>
+			</Grid.Styles>
+			<Button Content="STEREO" Margin="10,0,20,0" ></Button> <Button Grid.Column="1" Content="DEFAULT" ></Button>
+			<Button Grid.Column="2" Content="10 SEC" ></Button> <Button Grid.Column="3" Content="CONTINIOUS" ></Button>
+			<Button Classes="small" Grid.Column="4" >
+				<Image Source="{SvgImage /Assets/upload.svg}" ></Image>
+			</Button>
+			<Button Grid.Column="5" Classes="circle" Content="S" ></Button>
+			<Button Grid.Column="6" Classes="circle" Content="M" ></Button>
+			<Button Grid.Column="7" Classes="circle" Content="T" ></Button>
+			<Button Grid.Column="8" Classes="circle" Content="D" ></Button>
+			<Button Grid.Column="9" Classes="circle" Content="G" Margin="0,0,25,0" ></Button>
+			<Button Grid.Column="10" Classes="small" >
+				<Image Source="{SvgImage /Assets/next.svg}" ></Image>
+			</Button>
+		</Grid>
+	</Grid></UserControl>

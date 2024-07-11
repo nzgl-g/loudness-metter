@@ -1,0 +1,63 @@
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:controls="using:LoudnessMetter.Style" >
+	<Design.PreviewWith >
+		<StackPanel>
+				<controls:MainPanelLabel />
+				<controls:MainPanelLabel Classes="button"></controls:MainPanelLabel>
+		</StackPanel>
+	</Design.PreviewWith>
+
+	<Style Selector="controls|MainPanelLabel" >
+
+		<!-- Set Defaults -->
+		<Setter Property="Foreground" Value="White"></Setter>
+		<Setter Property="Background" Value="{DynamicResource darkblue-panel}"></Setter>
+		<Setter Property="Template" >
+			<ControlTemplate>
+				<Border Background="{TemplateBinding Background}" Padding="10,5" >
+					<StackPanel Orientation="Vertical">
+						<StackPanel.Styles>
+							<Style Selector="Label">
+								<Setter Property="FontFamily" Value="Outfit"></Setter>
+								<Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+								<Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+								<Setter Property="Padding" Value="0"></Setter>
+								<Setter Property="Foreground" Value="White"></Setter>
+							</Style>
+						</StackPanel.Styles>
+						<Label Content= "{TemplateBinding LargeText}" FontSize="20" Padding="0,0,0,8"></Label>
+						<Label Content="{TemplateBinding SmallText}" FontSize="14"></Label>
+					</StackPanel>
+				</Border>
+			</ControlTemplate>
+		</Setter>
+	</Style>
+	
+	<Style Selector="controls|MainPanelLabel.button" >
+		<!-- Set Defaults -->
+		<Setter Property="Foreground" Value="White"></Setter>
+		<Setter Property="Background" Value="{DynamicResource darkblue-panel}"></Setter>
+		<Setter Property="Template" >
+			<ControlTemplate>
+				
+					<StackPanel Orientation="Vertical">
+						<StackPanel.Styles>
+							<Style Selector="Label">
+								<Setter Property="FontFamily" Value="Outfit"></Setter>
+								<Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+								<Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+								<Setter Property="Padding" Value="0"></Setter>
+								<Setter Property="Foreground" Value="White"></Setter>
+							</Style>
+						</StackPanel.Styles>
+						<Border Background="{TemplateBinding Background}" CornerRadius="100" Padding="10,5" >
+							<Label Content= "{TemplateBinding LargeText}" FontSize="20" ></Label>
+						</Border>
+						<Label Content="{TemplateBinding SmallText}" FontSize="14" ></Label>
+					</StackPanel>
+
+			</ControlTemplate>
+		</Setter>
+	</Style>
+</Styles>
+
